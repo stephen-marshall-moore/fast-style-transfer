@@ -1,14 +1,9 @@
 #! /bin/bash
-
-mkdir data
-cd data
-wget http://www.vlfeat.org/matconvnet/models/beta16/imagenet-vgg-verydeep-19.mat
-mkdir bin
-wget http://msvocds.blob.core.windows.net/coco2014/train2014.zip
-unzip train2014.zip
-
-python style.py --style examples/style/rosemarysflowers.jpg \
-  --checkpoint-dir checkpoint/rose \
+./setup.sh
+echo "ciao, monde" > artifacts/hello.txt
+python style.py --style examples/style/rosemarys.jpg \
+  --test examples/content/chicago.jpg
+  --checkpoint-dir artifacts \
   --content-weight 1.5e1 \
-  --checkpoint-iterations 1000 \
+  --checkpoint-iterations 500 \
   --batch-size 20
